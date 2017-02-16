@@ -27,13 +27,13 @@ t <- NULL  ## initialize inv as NULL; will hold value of matrix inverse
 ## cachesolve will retrieve the inverse from the cache.
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-t <- x$getmean()
+t <- x$getInverse()
         if(!is.null(t)) {
                 message("Fetching data from catche")
                 return(t)
         }
         data <- x$get()
-        t <- mean(data, ...)
-        x$setmean(t)
+        t <- solve(data, ...)
+        x$setInverse(t)
         t
 }
